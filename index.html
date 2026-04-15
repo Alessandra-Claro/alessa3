@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alessandra Claro ✦ Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF69B4;
+    --pink-deep: #e0489a;
+    --pink-light: #FFB3D9;
+    --pink-pale: #fff0f7;
+    --dark: #1a0a12;
+    --dark-mid: #2e1020;
+    --gold: #f5c842;
+    --mint: #a8e6cf;
+    --cream: #fdf6ee;
+    --text: #1a0a12;
+    --text-muted: #7a3a5a;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,246,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1.5px solid var(--pink-light);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--font-script);
+    font-size: 1.7rem;
+    color: var(--pink-deep);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 0.2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: 50px;
+    transition: all 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--pink);
+    color: #fff;
+  }
+
+  /* ── PAGES ── */
+  .page {
+    min-height: 100vh;
+    padding-top: 64px;
+    display: none;
+  }
+  .page.active { display: block; }
+
+  /* ══════════════════════════════
+     PAGE 1 — HOME / HERO
+  ══════════════════════════════ */
+  #home {
+    background: linear-gradient(135deg, #fff0f7 0%, #fdf6ee 50%, #fff8fb 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 600px 500px at 80% 20%, rgba(255,105,180,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 400px at 10% 80%, rgba(168,230,207,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* Floating decorative blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .blob-1 { width: 420px; height: 420px; background: var(--pink); top: -100px; right: -100px; animation: drift 8s ease-in-out infinite alternate; }
+  .blob-2 { width: 300px; height: 300px; background: var(--gold); bottom: 10%; left: -80px; animation: drift 10s ease-in-out infinite alternate-reverse; }
+  .blob-3 { width: 200px; height: 200px; background: var(--mint); top: 40%; right: 15%; animation: drift 12s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(20px, 30px) scale(1.05); } }
+
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 5rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--pink);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.7s ease both;
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--dark);
+    animation: fadeDown 0.8s 0.1s ease both;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--pink-deep);
+  }
+  .hero-tagline {
+    margin-top: 1.2rem;
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--pink);
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+  .hero-desc {
+    margin-top: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 520px;
+    animation: fadeDown 0.8s 0.3s ease both;
+  }
+  .hero-pills {
+    margin-top: 1.8rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    animation: fadeDown 0.8s 0.4s ease both;
+  }
+  .pill {
+    background: var(--pink-pale);
+    border: 1.5px solid var(--pink-light);
+    color: var(--pink-deep);
+    font-size: 0.78rem; font-weight: 500;
+    padding: 0.4rem 1rem; border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .pill:hover { background: var(--pink); color: #fff; border-color: var(--pink); cursor: default; }
+
+  .hero-btns {
+    margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeDown 0.8s 0.5s ease both;
+  }
+  .btn-primary {
+    background: var(--pink); color: #fff;
+    padding: 0.75rem 2rem; border-radius: 50px;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: all 0.25s; box-shadow: 0 4px 20px rgba(255,105,180,0.35);
+  }
+  .btn-primary:hover { background: var(--pink-deep); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,105,180,0.45); }
+  .btn-outline {
+    background: transparent; color: var(--pink-deep);
+    padding: 0.75rem 2rem; border-radius: 50px;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em;
+    border: 2px solid var(--pink); cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--pink-pale); transform: translateY(-2px); }
+
+  /* Photo card */
+  .hero-photo-wrap {
+    position: relative; animation: fadeLeft 1s 0.3s ease both;
+  }
+  .hero-photo-frame {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(255,105,180,0.22), 0 6px 20px rgba(0,0,0,0.08);
+    aspect-ratio: 4/5;
+    background: linear-gradient(145deg, var(--pink-light), var(--pink-pale));
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .hero-photo-frame:hover img { transform: scale(1.04); }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    background: linear-gradient(145deg, #ffe0f0, #fff0f7);
+    color: var(--pink);
+    font-size: 4rem;
+  }
+  .photo-placeholder p {
+    font-family: var(--font-script);
+    font-size: 1.1rem;
+    color: var(--pink-deep);
+    text-align: center;
+    padding: 0 1.5rem;
+    line-height: 1.5;
+  }
+  .photo-badge {
+    position: absolute; bottom: -16px; left: -16px;
+    background: var(--gold);
+    border-radius: 18px; padding: 0.7rem 1.2rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    font-weight: 700; font-size: 0.85rem; color: var(--dark);
+    white-space: nowrap;
+  }
+  .photo-badge-top {
+    position: absolute; top: -16px; right: -16px;
+    background: var(--pink); color: #fff;
+    border-radius: 50%; width: 72px; height: 72px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 18px rgba(255,105,180,0.4);
+    animation: spin-slow 6s linear infinite;
+  }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--dark);
+    padding: 1.8rem 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 4rem; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--pink); }
+  .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+
+  /* ══════════════════════════════
+     PAGE 2 — TECH / SKILLS
+  ══════════════════════════════ */
+  #skills {
+    background: var(--dark);
+    color: #fff;
+    min-height: 100vh;
+  }
+  .skills-hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #3a0a22 100%);
+    padding: 5rem 2.5rem 3rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .skills-hero::after {
+    content: '< / >';
+    position: absolute; bottom: -40px; right: 5%;
+    font-family: var(--font-display);
+    font-size: 10rem; font-weight: 900;
+    color: rgba(255,105,180,0.06);
+    pointer-events: none;
+  }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pink); font-weight: 600; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--pink); }
+
+  .skills-grid {
+    max-width: 1100px; margin: 0 auto;
+    padding: 4rem 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,105,180,0.18);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--pink), var(--gold));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .skill-card:hover { border-color: rgba(255,105,180,0.5); transform: translateY(-4px); background: rgba(255,105,180,0.06); }
+  .skill-card:hover::before { opacity: 1; }
+  .skill-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .skill-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .skill-card p { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.6); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+  .skill-tag {
+    background: rgba(255,105,180,0.15); color: var(--pink-light);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: 50px;
+  }
+
+  /* Tech bar */
+  .tech-bar-section { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+  .tech-bar-section h2 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 2rem; color: var(--pink-light); }
+  .tech-item { margin-bottom: 1.4rem; }
+  .tech-item-top { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+  .tech-name { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+  .tech-pct { font-size: 0.78rem; color: var(--pink); font-weight: 600; }
+  .tech-track { background: rgba(255,255,255,0.08); border-radius: 50px; height: 6px; overflow: hidden; }
+  .tech-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--gold)); border-radius: 50px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+  /* ══════════════════════════════
+     PAGE 3 — PASSIONS
+  ══════════════════════════════ */
+  #passions {
+    background: linear-gradient(160deg, #fff8fb 0%, #f0faf5 100%);
+  }
+  .passions-header {
+    padding: 5rem 2.5rem 3rem;
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .passions-header .section-title { color: var(--dark); }
+
+  .passion-blocks {
+    max-width: 1100px; margin: 0 auto;
+    padding: 1rem 2.5rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+  }
+  .passion-block {
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .passion-block:hover { transform: translateY(-5px); }
+  .passion-block.pink { background: linear-gradient(135deg, #FFE0F0, #FFF0F7); border: 1.5px solid #FFB3D9; }
+  .passion-block.dark { background: var(--dark); color: #fff; }
+  .passion-block.gold { background: linear-gradient(135deg, #FFF8DC, #FFFDE7); border: 1.5px solid #f5c842; }
+  .passion-block.mint { background: linear-gradient(135deg, #E8FFF5, #F0FFF8); border: 1.5px solid var(--mint); }
+  .passion-block.wide { grid-column: span 2; }
+
+  .passion-emoji { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+  .passion-block h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .passion-block.dark h3 { color: #fff; }
+  .passion-block p { font-size: 0.9rem; line-height: 1.75; color: var(--text-muted); }
+  .passion-block.dark p { color: rgba(255,255,255,0.65); }
+  .passion-quote {
+    margin-top: 1.2rem; padding: 1rem 1.3rem;
+    background: rgba(255,255,255,0.6); border-radius: 12px;
+    font-style: italic; font-size: 0.88rem;
+    color: var(--pink-deep); border-left: 3px solid var(--pink);
+  }
+  .passion-block.dark .passion-quote { background: rgba(255,255,255,0.08); color: var(--pink-light); }
+
+  /* BTR special block */
+  .btr-block {
+    background: linear-gradient(135deg, var(--dark) 0%, #2e0a1a 100%);
+    grid-column: span 2;
+    color: #fff;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+  }
+  .btr-text .section-eyebrow { color: var(--gold); }
+  .btr-text h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #fff; }
+  .btr-text p { color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.8; }
+  .btr-photo-placeholder {
+    aspect-ratio: 1;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,105,180,0.2), rgba(245,200,66,0.15));
+    border: 1.5px solid rgba(255,105,180,0.3);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.8rem; color: var(--pink-light);
+    font-size: 3rem; position: relative; overflow: hidden;
+  }
+  .btr-photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+  .btr-photo-placeholder p { font-family: var(--font-script); font-size: 1rem; color: var(--pink-light); text-align: center; padding: 0 1rem; }
+  .btr-facts { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .btr-fact { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .btr-fact-icon { font-size: 1.1rem; }
+
+  /* ══════════════════════════════
+     PAGE 4 — ABOUT / LIFE
+  ══════════════════════════════ */
+  #about {
+    background: var(--cream);
+  }
+  .about-hero {
+    padding: 5rem 2.5rem 3rem;
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .about-hero .section-title { color: var(--dark); }
+  .about-intro {
+    margin-top: 1.5rem;
+    font-size: 1.05rem; line-height: 1.85; color: var(--text-muted);
+  }
+
+  .life-grid {
+    max-width: 1100px; margin: 0 auto;
+    padding: 2rem 2.5rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .life-card {
+    border-radius: 20px; padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .life-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(255,105,180,0.15); }
+  .lc-1 { background: linear-gradient(145deg, #fff0f7, #ffe0ef); border: 1.5px solid #FFB3D9; }
+  .lc-2 { background: linear-gradient(145deg, #fffde7, #fff8c5); border: 1.5px solid #f5c842; }
+  .lc-3 { background: linear-gradient(145deg, #e8fff5, #d6ffec); border: 1.5px solid var(--mint); }
+  .lc-4 { background: linear-gradient(145deg, #f3e8ff, #ede0ff); border: 1.5px solid #c084fc; }
+  .lc-5 { background: var(--dark); color: #fff; }
+  .lc-6 { background: linear-gradient(145deg, #fff7f0, #ffede0); border: 1.5px solid #fbbf7a; }
+  .life-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .life-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .life-card.lc-5 h3 { color: #fff; }
+  .life-card p { font-size: 0.83rem; line-height: 1.7; color: var(--text-muted); }
+  .life-card.lc-5 p { color: rgba(255,255,255,0.6); }
+
+  /* Philosophy strip */
+  .philosophy-strip {
+    background: linear-gradient(135deg, var(--pink-deep) 0%, #c0186e 100%);
+    padding: 4rem 2.5rem;
+    text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .philosophy-strip::before {
+    content: '❝';
+    position: absolute; top: -20px; left: 5%;
+    font-size: 10rem; opacity: 0.1;
+    font-family: var(--font-display);
+  }
+  .philosophy-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic;
+    font-weight: 700;
+    max-width: 800px; margin: 0 auto;
+    line-height: 1.5;
+    position: relative; z-index: 1;
+  }
+  .philosophy-source { margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ══════════════════════════════
+     SHARED / FOOTER
+  ══════════════════════════════ */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2.5rem;
+    font-size: 0.82rem; line-height: 1.8;
+  }
+  footer a { color: var(--pink); text-decoration: none; }
+  .footer-script { font-family: var(--font-script); font-size: 1.3rem; color: var(--pink-light); margin-bottom: 0.5rem; }
+
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo-wrap { max-width: 340px; margin: 0 auto; order: -1; }
+    .passion-blocks { grid-template-columns: 1fr; }
+    .btr-block { grid-template-columns: 1fr; grid-column: span 1; }
+    .btr-block.wide { grid-column: span 1; }
+    .life-grid { grid-template-columns: repeat(2, 1fr); }
+    .passion-block.wide { grid-column: span 1; }
+    nav { padding: 0 1rem; }
+    .nav-links a { font-size: 0.72rem; padding: 0.4rem 0.6rem; }
+  }
+  @media (max-width: 600px) {
+    .life-grid { grid-template-columns: 1fr; }
+    .stats-strip { gap: 2rem; }
+    .hero-inner { padding: 3rem 1.5rem 2rem; }
+    .skills-grid, .passion-blocks, .tech-bar-section, .life-grid { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+
+  /* Page transition */
+  .page { animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 50px; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home')">Alessandra ✦</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('skills')" id="nav-skills">Skills</a></li>
+    <li><a href="#" onclick="showPage('passions')" id="nav-passions">Passions</a></li>
+    <li><a href="#" onclick="showPage('about')" id="nav-about">About Me</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════
+     PAGE 1: HOME
+══════════════════════════════ -->
+<section class="page active" id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">✦ AI-Augmented Developer</div>
+      <h1 class="hero-name">
+        Hello, I'm<br>
+        <em>Alessandra</em> Claro
+      </h1>
+      <p class="hero-tagline">Information Systems · Data Strategy · Full-Stack Builder</p>
+      <p class="hero-desc">
+        UNLV Business Information Systems graduate (3 years!) working at the intersection of technical infrastructure and behavioral data analysis. I build automated full-stack systems and leverage data to optimize human performance — all fueled by lavender tea and a lot of optimism. 💖
+      </p>
+      <div class="hero-pills">
+        <span class="pill">🎓 UNLV Alumna</span>
+        <span class="pill">💻 Full-Stack Dev</span>
+        <span class="pill">📊 Data Analytics</span>
+        <span class="pill">🤖 AI Operations</span>
+        <span class="pill">♟️ Chess Player</span>
+        <span class="pill">🌱 8+ yr Vegan</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="showPage('skills')">See My Skills →</a>
+        <a href="#" class="btn-outline" onclick="showPage('about')">My World 💖</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <div class="photo-placeholder" id="photo-slot">
+          <span>📸</span>
+          <p>Alessandra & the BTR guys<br><em style="font-size:0.85rem; opacity:0.7;">Add your photo here!</em></p>
+        </div>
+      </div>
+      <div class="photo-badge">🎓 STEM OPT · Info Systems</div>
+      <div class="photo-badge-top">💖</div>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Years to Graduate</div></div>
+    <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Years Vegan</div></div>
+    <div class="stat-item"><div class="stat-num">2×</div><div class="stat-label">Met BTR</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Cups of Lavender Tea</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PAGE 2: SKILLS
+══════════════════════════════ -->
+<section class="page" id="skills">
+  <div class="skills-hero">
+    <div class="section-eyebrow">Technical Profile</div>
+    <h2 class="section-title">My <em>Skills</em> &amp; Stack</h2>
+    <p style="color:rgba(255,255,255,0.5); margin-top:1rem; font-size:0.95rem;">Building systems where logic meets creativity.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🧩</div>
+      <h3>Full-Stack Development</h3>
+      <p>Built end-to-end platforms including the English Learning Hub — a proprietary language acquisition system with personalized curriculum — and e-commerce infrastructure for Pure Perfection Wellness.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <h3>Data Analytics &amp; Strategy</h3>
+      <p>STEM OPT focused on Information Systems &amp; Data Analytics. I analyze behavioral data and track performance metrics to drive optimization — turning numbers into narratives.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL/MariaDB</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Data Workflows</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>AI Operations &amp; Prompt Engineering</h3>
+      <p>QA &amp; Beta Tester for pre-launch mobile apps with focus on system integrity and UX feedback loops. Deep expertise in prompt engineering and automated AI workflows.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">QA Testing</span>
+        <span class="skill-tag">UX Feedback</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <h3>UX/UI Design</h3>
+      <p>Engineered UX/UI for e-commerce platforms with a focus on intuitive flows and aesthetic coherence. I believe good design is invisible — it just works and feels right.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">UX Design</span>
+        <span class="skill-tag">UI Architecture</span>
+        <span class="skill-tag">E-Commerce</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📽️</div>
+      <h3>Audiovisual Systems</h3>
+      <p>Trained new staff on complex campus AV systems, mastered the setup within 2 months of hire. Disney Alumna managing high-capacity mechanical systems under strict protocols.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">AV Systems</span>
+        <span class="skill-tag">Training</span>
+        <span class="skill-tag">Operations</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <h3>Multilingual Communication</h3>
+      <p>Bilingual real-time technical translator at trade shows for international exhibitors. Certified in Linguistic Reprogramming (2022, Lima, Peru) — using cognitive science to accelerate language acquisition.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Bilingual</span>
+        <span class="skill-tag">Translation</span>
+        <span class="skill-tag">Cognitive Science</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-bar-section">
+    <h2>Proficiency Overview</h2>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">SQL / MariaDB / MySQL</span><span class="tech-pct">90%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="90"></div></div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">PHP</span><span class="tech-pct">82%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="82"></div></div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">HTML5 / CSS3</span><span class="tech-pct">88%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="88"></div></div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">Python</span><span class="tech-pct">75%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="75"></div></div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">JavaScript</span><span class="tech-pct">72%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="72"></div></div>
+    </div>
+    <div class="tech-item">
+      <div class="tech-item-top"><span class="tech-name">Prompt Engineering &amp; AI Ops</span><span class="tech-pct">95%</span></div>
+      <div class="tech-track"><div class="tech-fill" data-width="95"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PAGE 3: PASSIONS
+══════════════════════════════ -->
+<section class="page" id="passions">
+  <div class="passions-header">
+    <div class="section-eyebrow">Beyond the Code</div>
+    <h2 class="section-title" style="color:var(--dark);">What <em style="color:var(--pink-deep);">Lights Me Up</em></h2>
+    <p class="about-intro">From front rows at concerts to chess tournaments — here's the full, unfiltered version of me.</p>
+  </div>
+
+  <div class="passion-blocks">
+
+    <!-- BTR — wide spanning -->
+    <div class="passion-block btr-block wide">
+      <div class="btr-text">
+        <div class="section-eyebrow">💖 Mega-Fan</div>
+        <h3>Big Time Rush &amp; The Family They Built</h3>
+        <p>Philosophy: <em style="color:var(--gold);">"It's the only life you got, so you gotta live it big time."</em><br><br>
+        From the front section in Las Vegas to The Nostalgia Con in Houston — I've lived these moments fully. Met the guys twice and have a personal advice video from James Maslow. They (and Stephen!) are genuinely the kindest people on earth.</p>
+        <div class="btr-facts">
+          <div class="btr-fact"><span class="btr-fact-icon">🎵</span> Fav track: <strong>Windows Down</strong> (Famous, BTR &amp; Someday are close seconds!)</div>
+          <div class="btr-fact"><span class="btr-fact-icon">🎟️</span> Front section in Las Vegas &amp; Nostalgia Con in Houston</div>
+          <div class="btr-fact"><span class="btr-fact-icon">🎥</span> Personal advice video from James Maslow</div>
+          <div class="btr-fact"><span class="btr-fact-icon">🤍</span> Met the guys twice — kindest souls</div>
+        </div>
+      </div>
+      <div class="btr-photo-placeholder" id="btr-photo">
+        <span>📸</span>
+        <p>Alessandra &amp; the BTR guys<br><small style="opacity:0.6;">Add your photo here!</small></p>
+      </div>
+    </div>
+
+    <div class="passion-block pink">
+      <span class="passion-emoji">♟️</span>
+      <h3>Chess &amp; Strategic Thinking</h3>
+      <p>I love the strategic depth of chess — it mirrors my approach to programming: anticipating moves, calculating risks, and maintaining a solid defense while executing a winning innovation.</p>
+      <p style="margin-top:0.8rem;">Participated in <strong>two chess tournaments</strong> against other school teams. My dad is a way better player than me, but I guess the passion lies in our genes! 😄</p>
+    </div>
+
+    <div class="passion-block dark">
+      <span class="passion-emoji">💃</span>
+      <h3>Hip-Hop Dance</h3>
+      <p>Movement is my reset button. I bring high energy to the dance floor and my dev environment alike. Dance is where I process, release, and come back stronger.</p>
+      <div class="passion-quote">High energy on the floor, high energy in the code editor.</div>
+    </div>
+
+    <div class="passion-block gold">
+      <span class="passion-emoji">🎤</span>
+      <h3>Songwriting &amp; Rap</h3>
+      <p>I deconstruct rap lyrics to study linguistic structure — the same analytical brain that loves math finds patterns in rhyme schemes, rhythmic timing, and wordplay. I perform my own tracks to explore rhythm and poetry.</p>
+    </div>
+
+    <div class="passion-block mint">
+      <span class="passion-emoji">🔢</span>
+      <h3>Mathematics &amp; Logic</h3>
+      <p>I genuinely <em>love</em> math! The clarity of logic and the beauty of a solved equation fuel my technical work. There's something almost poetic about the way math makes order from complexity.</p>
+    </div>
+
+    <div class="passion-block pink">
+      <span class="passion-emoji">🧪</span>
+      <h3>Science &amp; Soul Blog</h3>
+      <p>Research-driven articles on compounds like <strong>Linalool</strong> and <strong>Melatonin</strong>. Certified in Linguistic Reprogramming (2022, Lima, Peru) — using cognitive rewiring to accelerate learning and unlock potential.</p>
+    </div>
+
+    <div class="passion-block dark">
+      <span class="passion-emoji">✈️</span>
+      <h3>Travel &amp; Self-Care</h3>
+      <p>Flights to new cities, beach days, or anything that keeps me at peace. Self-care isn't selfish — it's strategic. I return from every trip more creative and more grounded.</p>
+      <div class="passion-quote">"I'm not going to wait for another life to feel alive!"</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PAGE 4: ABOUT
+══════════════════════════════ -->
+<section class="page" id="about">
+  <div class="about-hero">
+    <div class="section-eyebrow" style="color:var(--pink);">Personal World</div>
+    <h2 class="section-title">The <em style="color:var(--pink-deep);">Full</em> Alessandra</h2>
+    <p class="about-intro">
+      Founder. Developer. Dancer. Chess player. Disney Alumna. Vegan baker. Mega-fan.<br>
+      Here's where all the pieces come together. 💖
+    </p>
+  </div>
+
+  <div class="life-grid">
+    <div class="life-card lc-1">
+      <div class="life-card-icon">🌱</div>
+      <h3>Vegan &amp; Wellness</h3>
+      <p>100% Vegan for 8+ years (seasonally Ovo-Vegetarian). Food is philosophy. I cook, I bake, I nourish intentionally.</p>
+    </div>
+
+    <div class="life-card lc-2">
+      <div class="life-card-icon">🧁</div>
+      <h3>Baker Extraordinaire</h3>
+      <p>"Damn good" fudge brownies and cakes — my favorite is red velvet. Baking is chemistry, and I love chemistry.</p>
+    </div>
+
+    <div class="life-card lc-3">
+      <div class="life-card-icon">🍵</div>
+      <h3>Tea &amp; Rituals</h3>
+      <p>In love with lavender tea, matcha, and blackberries. My morning ritual is sacred. Built with love, passion, and lavender tea. ☕</p>
+    </div>
+
+    <div class="life-card lc-4">
+      <div class="life-card-icon">😂</div>
+      <h3>Humor &amp; Joy</h3>
+      <p>I love comedy. I'm very easy to laugh — finding the humor in life is my ultimate wellness hack. Joy is a practice.</p>
+    </div>
+
+    <div class="life-card lc-5">
+      <div class="life-card-icon">🐾</div>
+      <h3>Proud Cat Mom</h3>
+      <p>Because every high-achieving dev needs a purring coworker who judges your code and knocks things off your desk.</p>
+    </div>
+
+    <div class="life-card lc-6">
+      <div class="life-card-icon">🎬</div>
+      <h3>Disney Alumna</h3>
+      <p>Managed high-capacity mechanical systems under strict Disney protocols. Magic is just engineering with extra sparkle.</p>
+    </div>
+  </div>
+
+  <div class="philosophy-strip">
+    <div class="philosophy-text">
+      "It's the only life you got, so you gotta live it big time."
+    </div>
+    <div class="philosophy-source">— by BTR</div>
+  </div>
+
+  <footer>
+    <div class="footer-script">Alessandra Claro ✦</div>
+    <p>AI-Augmented Developer · Information Systems Specialist · Data Strategist</p>
+    <p style="margin-top:0.5rem;">Built with love, passion, and lavender tea 🍵💖</p>
+    <p style="margin-top:0.5rem; font-size:0.75rem;">Favorite color: <a href="#" style="color:#FF69B4;">#FF69B4</a> · UNLV Alumna · Las Vegas, NV</p>
+  </footer>
+</section>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+
+    if (id === 'skills') {
+      setTimeout(animateBars, 300);
+    }
+    return false;
+  }
+
+  function animateBars() {
+    document.querySelectorAll('.tech-fill').forEach(fill => {
+      const w = fill.getAttribute('data-width');
+      fill.style.width = w + '%';
+    });
+  }
+
+  // Nav click prevention
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', e => e.preventDefault());
+  });
+  document.querySelectorAll('.btn-primary, .btn-outline').forEach(b => {
+    b.addEventListener('click', e => e.preventDefault());
+  });
+</script>
+</body>
+</html>
