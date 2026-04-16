@@ -80,56 +80,62 @@
   /* ══════════════════════════════
      PAGE 1 — HOME / HERO
   ══════════════════════════════ */
-  .hero {
-    height: 100vh; /* Full screen height */
+.hero {
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('your-background.jpg');
+    /* Use your BTR photo as the background */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/btr.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
+    margin: 0;
 }
 
-  .cursive {
-    font-family: 'Cursive', 'Brush Script MT', sans-serif; /* Replace with your specific Google Font if you have one */
-    font-size: 4rem;
-    margin-bottom: 0.5rem;
+.cursive {
+    font-family: 'Pacifico', cursive; /* You may need to link this in your HTML head */
+    font-size: 5rem;
+    color: #ff69b4; /* That vibrant pink from your photo */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .tagline {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
-  .hero-btns {
+.hero-btns {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
 }
 
 .btn {
-    padding: 12px 24px;
-    background-color: var(--gold, #d4af37); /* Uses your gold theme color */
-    color: black;
+    padding: 15px 35px;
+    border-radius: 50px; /* Makes them very round like the photo */
     text-decoration: none;
-    border-radius: 30px;
     font-weight: bold;
     transition: 0.3s;
 }
 
+/* The Pink Button */
+.btn {
+    background-color: #ff69b4;
+    color: white;
+    border: 2px solid #ff69b4;
+}
+
+/* The Outline Button */
 .btn-outline {
     background-color: transparent;
     border: 2px solid white;
     color: white;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
   
   #home {
